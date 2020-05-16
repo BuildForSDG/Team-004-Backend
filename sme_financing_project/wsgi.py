@@ -1,4 +1,5 @@
-"""WSGI config for sme_financing_project project.
+"""
+WSGI config for sme_financing_project project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
