@@ -4,7 +4,9 @@ from sme_financing_app_one import models
 
 class ProfileSerializer(serializers.ModelSerializer):
     """Create User Profile Serializer."""
+    
     class Meta:
+
 
         """Create user."""
 
@@ -21,7 +23,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         """Create and return a new user."""
-
         user = models.UserProfile.objects.create_user(
             email=validated_data['email'],
             first_name=validated_data['first_name'],

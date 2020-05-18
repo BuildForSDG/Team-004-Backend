@@ -19,7 +19,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.UpdateOwnProfile,)
 
 class UserLoginApiView(ObtainAuthToken):
-    
     """Handle creating user authentication tokens."""
+
 
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
