@@ -15,6 +15,7 @@ djangorestframework = "^3.11.0"
 pytest = "^5.2"
 flake8 = "^3.7.9"
 autopep8 = "^1.5.2"
+yapf = "^0.30.0"
 
 [tool.poetry.scripts]
 app = 'src.app:run'
