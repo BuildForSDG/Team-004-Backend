@@ -17,9 +17,9 @@ class ProfileViewSet(viewsets.ModelViewSet):
     authentication_classes = (TokenAuthentication,)
     search_fields = ('first_name', 'last_name', 'email',)
     permission_classes = (permissions.UpdateOwnProfile,)
-    
 
 class UserLoginApiView(ObtainAuthToken):
     """Handle creating user authentication tokens."""
+    
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 

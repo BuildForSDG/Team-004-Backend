@@ -60,11 +60,8 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         return full_name.strip()
 
     def get_short_name(self):
-        """
-        Returns the short name for the user.
-        """
+        """Returns the short name for the user."""
         return self.first_name
-    
 
 class SME(models.Model):
     name = models.CharField(max_length=100)
