@@ -1,6 +1,3 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -23,6 +20,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
     
 
 class UserLoginApiView(ObtainAuthToken):
-    """Handle creating user authentication tokens"""
+    """Handle creating user authentication tokens."""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 

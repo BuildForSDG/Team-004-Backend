@@ -11,9 +11,7 @@ class UserProfileManager(BaseUserManager):
     use_in_migrations = True
 
     def _create_user(self, email, password, **extra_fields):
-        """
-        Creates and saves a User with the given email and password.
-        """
+        """Creates and saves a User with the given email and password."""
         if not email:
             raise ValueError('The given email must be set')
         email = self.normalize_email(email)
@@ -55,16 +53,16 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     def get_full_name(self):
-        '''
+        """
         Returns the first_name plus the last_name, with a space in between.
-        '''
+        """
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
 
     def get_short_name(self):
-        '''
+        """
         Returns the short name for the user.
-        '''
+        """
         return self.first_name
     
 
@@ -79,7 +77,6 @@ class SMEUser(models.Model):
     sme = models.ForeignKey(SME, on_delete=models.CASCADE)
     user = models.OneToOneField(settings.AUTH_MODEL_USER, on_delete=models.CASCADE)
 
-    
 class SMEProject(models.Model):
     business_plan = models.TextField()
     tenure = models.DateField()
