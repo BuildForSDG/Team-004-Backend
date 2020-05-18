@@ -4,12 +4,9 @@ from sme_financing_app_one import models
 
 class ProfileSerializer(serializers.ModelSerializer):
     """Create User Profile Serializer."""
-    
-
 
     class Meta:
-
-        
+  
         """Create user."""
 
         model = models.UserProfile
