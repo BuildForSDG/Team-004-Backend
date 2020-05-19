@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from sme_financing_app_one import models
 
+
 class ProfileSerializer(serializers.ModelSerializer):
     """Create User Profile Serializer."""
     class Meta:
@@ -24,7 +25,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
             date_joined=['date_joined'],
-            phone_no = validated_data['phone_no'],
+            phone_no=validated_data['phone_no'],
             password=validated_data['password']
         )
 
