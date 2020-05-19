@@ -1,4 +1,0 @@
-[pep257]
-verbose = true
-ignore = D203,D204
-explain = true
