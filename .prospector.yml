@@ -1,0 +1,2 @@
+pep257:
+  disable: [D203]
