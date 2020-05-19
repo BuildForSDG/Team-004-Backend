@@ -5,7 +5,6 @@ from sme_financing_app_one import views
 
 router = DefaultRouter()
 router.register('v1/profile', views.ProfileViewSet)
-router.register('v1/sme', views.SMEViewSet)
 
 urlpatterns = [
     path('login/', views.UserLoginApiView.as_view()),

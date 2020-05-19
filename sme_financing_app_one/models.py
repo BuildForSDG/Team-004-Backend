@@ -69,7 +69,7 @@ class SME(models.Model):
 class SMEUser(models.Model):
     name = models.CharField(max_length=100)
     sme = models.ForeignKey(SME, on_delete=models.CASCADE)
-    user = models.OneToOneField(settings.AUTH_MODEL_USER, on_delete=models.CASCADE)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
 class SMEProject(models.Model):
     business_plan = models.TextField()
