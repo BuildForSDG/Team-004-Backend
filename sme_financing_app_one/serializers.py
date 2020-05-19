@@ -10,8 +10,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     """
 
     class Meta:
-        """
-        Create user.
+        """Create user.
 
         Some more details.
         """
