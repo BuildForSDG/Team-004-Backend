@@ -5,9 +5,14 @@ A one-liner phrase describing this project or app
 
 ## About
 
-What is this project about. Ok to enrich here or the section above it with an image. 
+This project aims to solve the problem of limited access to financing for SMEs. We understand that SMEs are a major backbone for developed countries; Therefore, to help grow the economy of Nigeria sustainably, SMEs must thrive.
 
-Once this repo has been setup on Codacy by the TTL, replace the above badge with the actual one from the Codacy dashboard, and add the code coverage badge as well. This is mandatory
+The biggest limiting factor of SME growth in Nigeria is access to financing, so we are building a a platform to make financing decentralized and more accessible.
+
+Welcome to WeFinance.
+
+
+## Requirements
 
 This is a simple python starter repo template for setting up your project. The setup contains:
 
@@ -26,7 +31,7 @@ How would someone use what you have built, include URLs to the deployed app, ser
 
 
 ## Setup
-You should have **Python 3.5+** and **git** installed. 
+You should have **Python 3.5+** and **git** installed.
 
 1. Clone the repo you've created from the template herein and change into the directory
 
@@ -88,7 +93,7 @@ All tests should be written in the `tests` folder. tests/test_src.py is a sample
 
 - Lint: `poetry run flake8`
 - Run tests using the command: `poetry run pytest`
-- Install dependencies: 
+- Install dependencies:
   `poetry add <dependency>`
 - Install dev dependencies:
   `poetry add --dev <dev-dependency>`
@@ -117,3 +122,26 @@ It's powerful to always give credit.
 
 ## LICENSE
 MIT
+
+## Important Commands
+
+To create a new Django app:
+- `poetry run python manage.py startapp <app_name>`
+
+To create migrations:
+- `poetry run python manage.py makemigrations <optional_app_name>`
+
+To run migrations for an app:
+- `poetry run python manage.py migrate`
+
+To undo migrations for an app:
+- `poetry run python manage.py migrate <required_app_name> zero`
+
+To Run Tests:
+- `poetry run python manage.py test <optional_test_folder>`
+
+To delete all the db's data:
+- `poetry run python manage.py flush`
+
+To export to requirements file (for Heroku deployment):
+- `poetry export -f requirements.txt > requirements.txt`
