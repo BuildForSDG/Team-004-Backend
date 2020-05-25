@@ -41,3 +41,7 @@ class InvestorManagementModelTests(TestCase):
             investor_org=create_sample_investor_org(),
             user=create_sample_user()
         )
+
+        investor_users = InvestorUser.objects.all()
+
+        self.assertEqual(len(investor_users), 1)

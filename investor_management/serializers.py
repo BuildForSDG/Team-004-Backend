@@ -37,7 +37,8 @@ class CreateInvestorUserSerializer(ManageInvestorUserSerializer):
     user = UserSerializer(many=False)
 
     def create(self, validated_data):
-        """Create SME User."""
+        """Create Investor User."""
+
         user_data = validated_data.pop('user')
         payload = {'role': 'INVESTOR_USER'}
         user_data.update(payload)
@@ -46,4 +47,6 @@ class CreateInvestorUserSerializer(ManageInvestorUserSerializer):
         investor_org_data = validated_data.pop('investor_org')
         new_investor_org = InvestorOrganization.objects.create(**investor_org_data)
 
-        return InvestorUser.objects.create(investor_org=new_investor_org, user=new_user)
+        investor_user_model = self.Meta.model
+
+        return investor_user_model.objects.create(investor_org=new_investor_org, user=new_user)

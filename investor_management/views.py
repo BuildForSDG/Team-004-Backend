@@ -1,6 +1,6 @@
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import generics, viewsets
+from rest_framework import generics
 
 from investor_management.serializers import *
 

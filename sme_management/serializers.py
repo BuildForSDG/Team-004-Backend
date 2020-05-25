@@ -43,6 +43,9 @@ class CreateSMEUserSerializer(ManageSMEUserSerializer):
 
     def create(self, validated_data):
         """Create SME User."""
+
+        sme_user_model = self.Meta.model
+
         user_data = validated_data.pop('user')
         payload = {'role': 'SME_USER'}
         user_data.update(payload)
@@ -51,7 +54,7 @@ class CreateSMEUserSerializer(ManageSMEUserSerializer):
         sme_data = validated_data.pop('sme')
         new_sme = SME.objects.create(**sme_data)
 
-        return SMEUser.objects.create(sme=new_sme, user=new_user)
+        return sme_user_model.objects.create(sme=new_sme, user=new_user)
 
 
 class SMEProjectSerializer(serializers.ModelSerializer):

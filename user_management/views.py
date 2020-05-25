@@ -2,10 +2,9 @@ from django.contrib.auth import get_user_model
 
 from rest_framework.settings import api_settings
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
 from rest_framework import generics, authentication, permissions
 
-from user_management.serializers import UserSerializer, AuthTokenSerializer, UserSerializer
+from user_management.serializers import UserSerializer, AuthTokenSerializer
 
 
 class CreateUserView(generics.CreateAPIView):
