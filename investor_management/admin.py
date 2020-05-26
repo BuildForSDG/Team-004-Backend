@@ -4,3 +4,4 @@ from investor_management import models
 # Register your models here.
 admin.site.register(models.InvestorOrganization)
 admin.site.register(models.InvestorUser)
+admin.site.register(models.InvestorOrgSMEProjectInvestments)
