@@ -1,0 +1,1 @@
+web: gunicorn sme_financing_project.wsgi --log-file -

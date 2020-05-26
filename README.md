@@ -51,6 +51,9 @@ To delete all the db's data:
 To export to requirements file (for Heroku deployment):
 - `poetry export -f requirements.txt > requirements.txt`
 
+To run the application (locally):
+- ` poetry run python manage.py runserver 0.0.0.0:8080`
+
 Poetry commands:
 - `poetry --version`
 - To update poetry to the latest stale version: `poetry self update`
@@ -60,6 +63,9 @@ Poetry commands:
 - Install dependencies: `poetry add <dependency>`
 - Install dev dependencies: `poetry add --dev <dev-dependency>`
 - Run your project: `poetry run app`
+
+Terminal Commands:
+- `touch <file_name><file_ext>`
 
 ## Authors
 
