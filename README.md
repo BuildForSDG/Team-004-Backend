@@ -63,6 +63,8 @@ Poetry commands:
 - Install dependencies: `poetry add <dependency>`
 - Install dev dependencies: `poetry add --dev <dev-dependency>`
 - Run your project: `poetry run app`
+- To export requirements `poetry export -f requirements.txt > requirements.txt`
+
 
 Terminal Commands:
 - `touch <file_name><file_ext>`

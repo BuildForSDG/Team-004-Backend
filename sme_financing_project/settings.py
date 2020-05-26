@@ -28,7 +28,9 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'user_management',
     'sme_management',
-    'investor_management'
+    'investor_management',
+    'audit_management',
+    'backoffice_management'
 ]
 
 MIDDLEWARE = [
