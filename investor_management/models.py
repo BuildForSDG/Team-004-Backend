@@ -8,7 +8,7 @@ class InvestorOrganization(models.Model):
     address = models.TextField()
 
     def __str__(self):
-        return '%s at %s' % (self.org_name, self.address)
+        return self.org_name
 
 
 class InvestorUser(models.Model):

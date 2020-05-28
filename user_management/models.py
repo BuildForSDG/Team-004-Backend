@@ -71,12 +71,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     USER_ROLE_CHOICES = (
         ("SME_USER", "SME_USER"),
         ("INVESTOR_USER", "INVESTOR_USER"),
-        ("SYS_ADMIN", "SYS_ADMIN")
+        ("BACKOFFICE_USER", "BACKOFFICE_USER")
     )
     role = models.CharField(
         max_length=225,
         choices=USER_ROLE_CHOICES,
-        default="SYS_ADMIN"
+        default="BACKOFFICE_USER"
     )
 
     objects = UserManager()

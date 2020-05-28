@@ -30,9 +30,7 @@ class InvestorManagementModelTests(TestCase):
         """Test creating investor organization is successful"""
 
         investor_org = create_sample_investor_org()
-        investor_org_str = '%s at %s' % (investor_org.org_name, investor_org.address)
-
-        self.assertEqual(str(investor_org), investor_org_str)
+        self.assertEqual(str(investor_org), investor_org.org_name)
 
     def test_investor_user_created_successfully(self):
         """Test that investor user is created successfully"""

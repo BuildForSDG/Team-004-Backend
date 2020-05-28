@@ -10,7 +10,7 @@ class InvestorOrganizationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = InvestorOrganization
-        fields = ('id', 'org_name', 'address')
+        fields = ('id', 'org_name')
         read_only_fields = ('id',)
 
 

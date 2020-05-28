@@ -27,18 +27,17 @@ class SMEManagementModelTests(TestCase):
         """Test that sme is created successfully"""
 
         sme = create_sample_sme()
-        sme_str = '%s at %s' % (sme.org_name, sme.address)
+        self.assertEqual(str(sme), sme.org_name)
 
-        self.assertEqual(str(sme), sme_str)
 
-    def test_sme_user_created_successfully(self):
-        """Test that sme user is created successfully"""
+def test_sme_user_created_successfully(self):
+    """Test that sme user is created successfully"""
 
-        SMEUser.objects.create(
-            sme=create_sample_sme(),
-            user=create_sample_user()
-        )
+    SMEUser.objects.create(
+        sme=create_sample_sme(),
+        user=create_sample_user()
+    )
 
-        sme_users = SMEUser.objects.all()
+    sme_users = SMEUser.objects.all()
 
-        self.assertEqual(len(sme_users), 1)
+    self.assertEqual(len(sme_users), 1)

@@ -9,7 +9,7 @@ class SME(models.Model):
     documents = models.FileField(upload_to='documents/', blank=True)
 
     def __str__(self):
-        return '%s at %s' % (self.org_name, self.address)
+        return self.org_name
 
 
 class SMEUser(models.Model):
@@ -55,7 +55,7 @@ class SMEProject(models.Model):
     )
 
 
-class Milestones(models.Model):
+class SMEProjectMilestones(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     amount_required = models.DecimalField(

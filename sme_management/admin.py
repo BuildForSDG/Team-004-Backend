@@ -5,4 +5,4 @@ from sme_management import models
 admin.site.register(models.SMEUser)
 admin.site.register(models.SME)
 admin.site.register(models.SMEProject)
-admin.site.register(models.Milestones)
+admin.site.register(models.SMEProjectMilestones)

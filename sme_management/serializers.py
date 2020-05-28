@@ -11,7 +11,7 @@ class SMESerializer(serializers.ModelSerializer):
     class Meta:
         model = SME
         fields = ('id', 'org_name')
-        extra_kwargs = {'id': {'read_only': True}}
+        read_only_fields = ('id',)
 
 
 class ManageSMEUserSerializer(serializers.ModelSerializer):
