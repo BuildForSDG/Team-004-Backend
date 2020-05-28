@@ -52,7 +52,7 @@ To export to requirements file (for Heroku deployment):
 - `poetry export -f requirements.txt > requirements.txt`
 
 To run the application (locally):
-- ` poetry run python manage.py runserver 0.0.0.0:8080`
+- `poetry run python manage.py runserver 0.0.0.0:8080`
 
 Poetry commands:
 - `poetry --version`
