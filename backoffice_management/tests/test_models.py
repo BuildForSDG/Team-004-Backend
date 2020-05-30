@@ -17,6 +17,7 @@ def create_sample_user(email='Test@email.com',
 
 
 class BackofficeUserModelTests(TestCase):
+    """Backoffice user model test"""
 
     def test_backoffice_user_created_successfully(self):
         """Test that backoffice user created successfully."""
