@@ -339,6 +339,9 @@ class SMEManagementAPITests(TestCase):
         create_sme_user(self.user, sme1)
         sme_project, milestone = create_sample_sme_project_with_milestones(sme1)
 
+        # Only doing this because sme_project will be an unused variable otherwise
+        print(sme_project)
+
         payload = {'status': 'COMPLETED'}
         url = get_update_milestone_url(milestone.id)
 
