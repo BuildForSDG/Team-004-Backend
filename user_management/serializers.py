@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = (
-            'first_name', 'last_name', 'phone_no',
+            'id', 'first_name', 'last_name', 'phone_no',
             'email', 'password', 'role'
         )
 
@@ -20,6 +20,9 @@ class UserSerializer(serializers.ModelSerializer):
                 'style': {'input_type': 'password'}
             },
             'role': {
+                'read_only': True
+            },
+            'id': {
                 'read_only': True
             }
         }

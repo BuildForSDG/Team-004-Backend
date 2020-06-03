@@ -22,9 +22,12 @@ class SMEUser(models.Model):
 
 class SMEProject(models.Model):
     project_name = models.CharField(max_length=255)
-    business_plan = models.TextField()
+    project_description = models.TextField(default='NO DESCRIPTION')
+    business_plan = models.FileField(upload_to='business-plans/', default=None)
     investment_tenure_end_date = models.DateField()
-    documents = models.FileField(upload_to='projects/', blank=True)
+    cashflow_statement = models.FileField(upload_to='cashflow-stmts/', default=None, null=True)
+    income_statement = models.FileField(upload_to='income-stmts/', default=None, null=True)
+    balance_sheet = models.FileField(upload_to='balance-sheets/', default=None, null=True)
     category = models.CharField(max_length=100)
     amount_required = models.DecimalField(
         max_digits=10,
@@ -43,15 +46,19 @@ class SMEProject(models.Model):
             MinValueValidator(0)
         ]
     )
-    COMPLETION_STATUSES = (
+    STATUS = (
         ("COMPLETED", "COMPLETED"),
         ("IN_PROGRESS", "IN_PROGRESS"),
         ("UNAPPROVED", "UNAPPROVED")
     )
-    project_completion_status = models.CharField(
+    status = models.CharField(
         max_length=255,
-        choices=COMPLETION_STATUSES,
+        choices=STATUS,
         default="UNAPPROVED"
+    )
+    sme = models.ForeignKey(
+        SME,
+        on_delete=models.CASCADE
     )
 
 
@@ -63,7 +70,22 @@ class SMEProjectMilestones(models.Model):
         decimal_places=2,
         default=0.00
     )
+    sme = models.ForeignKey(
+        SME,
+        on_delete=models.CASCADE
+    )
     sme_project = models.ForeignKey(
         SMEProject,
         on_delete=models.CASCADE
+    )
+    proof_of_completion = models.FileField(upload_to='milestone-complete-proof/', default=None, null=True)
+    STATUS = (
+        ("COMPLETED", "COMPLETED"),
+        ("IN_PROGRESS", "IN_PROGRESS"),
+        ("NOT_STARTED", "NOT_STARTED")
+    )
+    status = models.CharField(
+        max_length=255,
+        choices=STATUS,
+        default="NOT_STARTED"
     )
