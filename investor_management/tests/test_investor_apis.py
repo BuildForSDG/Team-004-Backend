@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.test import APIClient
 
 from sme_management.tests.test_sme_apis import \
-    create_sample_sme_project_with_milestones, create_sme_user, \
+    create_sample_sme_project_with_milestones, \
     create_user, create_sample_sme
 
 GET_ALL_SME_PROJECTS = reverse('sme_management:sme_project_timeline')

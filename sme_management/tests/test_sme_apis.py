@@ -4,7 +4,6 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.conf import settings
-from django.core.files import File
 
 from rest_framework import status
 from rest_framework.test import APIClient
@@ -251,7 +250,8 @@ class SMEManagementAPITests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         self.assertEqual(payload[0]['name'], res.data[0]['name'])
         self.assertEqual(payload[1]['name'], res.data[1]['name'])
-        self.assertEqual(res.data[0]['sme_project'], res.data[1]['sme_project'])
+        self.assertEqual(res.data[0]['sme_project'], sme_project.id)
+        self.assertEqual(res.data[1]['sme_project'], sme_project.id)
 
     def test_creating_milestones_without_project_fails(self):
         """
@@ -294,6 +294,9 @@ class SMEManagementAPITests(TestCase):
 
         # Create sme project with milestones for new user
         sme_project, milestone = create_sample_sme_project_with_milestones(sme1)
+
+        # Only doing this because sme_project will be an unused variable otherwise
+        print(sme_project)
 
         # Try updating it with self user
         payload = {'status': 'COMPLETED'}

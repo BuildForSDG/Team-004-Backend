@@ -8,7 +8,6 @@ from rest_framework.views import APIView
 from rest_framework import status, viewsets
 
 from django.db.models import Q
-from django.core.exceptions import ObjectDoesNotExist
 
 from sme_management.serializers import *
 from sme_management import permissions
@@ -67,7 +66,7 @@ class SMEProjectAPIView(APIView):
     #  how we get COMPLETED, IN_PROGRESS and UNAPPROVED projects
     #  For now, we just return everything in one call
     #  There might be a solution to this with search_fields. Confirm
-    def get(self, request, format=None):
+    def get(self, request, *args, **kwargs):
         # Get sme, then filter projects by sme
         # user linked to sme user, which is linked to sme
 

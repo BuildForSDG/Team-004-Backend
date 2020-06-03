@@ -11,7 +11,11 @@ class ViewProjectTimeline(permissions.BasePermission):
         """Check timeline is requested by investor or backoffice user"""
         print(request.user.role)
         print(view)
-        return request.user.role == 'INVESTOR_USER' or request.user.role == 'BACKOFFICE_USER'
+        permitted = request.user.role == 'INVESTOR_USER' or request.user.role == 'BACKOFFICE_USER'
+        if not permitted:
+            print(self.message)
+
+        return permitted
 
 
 class UploadProofForMilestone(permissions.BasePermission):
@@ -21,8 +25,9 @@ class UploadProofForMilestone(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
         """Check user is trying to update a milestone they have access to"""
-        print(request.user.role)
         sme = obj.sme
         exists = SMEUser.objects.filter(sme=sme, user=request.user).exists()
+        if not exists:
+            print(self.message)
 
         return exists
