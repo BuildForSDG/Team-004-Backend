@@ -313,6 +313,9 @@ class SMEManagementAPITests(TestCase):
         create_sme_user(self.user, sme1)
         sme_project, milestone = create_sample_sme_project_with_milestones(sme1)
 
+        # Only doing this because sme_project will be an unused variable otherwise
+        print(sme_project)
+
         file = generate_sample_file()
         file_path = file.name
         f = open(file_path, "rb")
