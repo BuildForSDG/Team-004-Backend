@@ -147,6 +147,7 @@ class SMEManagementAPITests(TestCase):
         """Test sme project creation endpoint for authenticated users"""
 
         payload, sme = get_create_sme_project_payload()
+        create_sme_user(user=self.user, sme=sme)
 
         file = generate_sample_file()
         file_path = file.name
@@ -182,6 +183,7 @@ class SMEManagementAPITests(TestCase):
         payload, sme = get_create_sme_project_payload()
         payload.pop('sme', None)
 
+        create_sme_user(user=self.user, sme=sme)
         sme.delete()
 
         file = generate_sample_file()

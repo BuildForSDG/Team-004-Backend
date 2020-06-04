@@ -48,19 +48,29 @@ class SMEProjectAPIView(APIView):
 
     def post(self, request, *args, **kwargs):
 
-        incomplete_project_exists = SMEProject.objects.filter(~Q(status='COMPLETED')).exists()
-        if incomplete_project_exists:
-            return Response(data="An incomplete project still exists",
-                            status=status.HTTP_400_BAD_REQUEST)
+        user = self.request.user
+        sme_user = user.smeuser
+        sme = None
 
-        serializer = self.serializer_class(data=request.data)
+        if sme_user:
+            sme = sme_user.sme
 
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            print(serializer.errors)
-            return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+        if sme:
+            incomplete_project_exists = SMEProject.objects.filter(~Q(status='COMPLETED'), sme=sme).exists()
+            if incomplete_project_exists:
+                return Response(data={"detail": "An incomplete project still exists"},
+                                status=status.HTTP_400_BAD_REQUEST)
+
+            serializer = self.serializer_class(data=request.data)
+
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                print(serializer.errors)
+                return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     # TODO: In the future, we would want to make a separation between
     #  how we get COMPLETED, IN_PROGRESS and UNAPPROVED projects
@@ -125,9 +135,7 @@ class SMEProjectMilestoneViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         """Use this to retrieve the milestones for a particular project"""
         project_id = self.request.query_params.get('project_id')
-        if project_id:
-            return self.queryset.filter(sme_project=project_id)
-        return self.queryset
+        return self.queryset.filter(sme_project=project_id)
 
 
 # TODO: Ensure updates can only happen for milestones an SME_USER has access to
