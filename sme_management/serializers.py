@@ -57,9 +57,57 @@ class CreateSMEUserSerializer(ManageSMEUserSerializer):
         return sme_user_model.objects.create(sme=new_sme, user=new_user)
 
 
+# Call one create project
+# Call two to create milestones
+# If there's a project without milestones created, delete it ***
+
+# First create project with document
+# Then update the project with task list
+
 class SMEProjectSerializer(serializers.ModelSerializer):
     """Serializer for SME Projects."""
+    sme = serializers.PrimaryKeyRelatedField(
+        many=False,
+        queryset=SME.objects.all()
+    )
+
+    # TODO: What constitutes as an empty file? Do more research after MVP
+    business_plan = serializers.FileField(allow_empty_file=True)
+    cashflow_statement = serializers.FileField(allow_empty_file=True)
+    income_statement = serializers.FileField(allow_empty_file=True)
+    balance_sheet = serializers.FileField(allow_empty_file=True)
 
     class Meta:
         model = SMEProject
-        fields = ('business_plan',)
+        fields = (
+            'id', 'project_name', 'business_plan',
+            'investment_tenure_end_date', 'cashflow_statement',
+            'income_statement', 'balance_sheet',
+            'category', 'amount_required', 'equity_offering',
+            'sme', 'status'
+        )
+        read_only_fields = ('id', 'status',)
+
+
+class SMEProjectMilestonesSerializer(serializers.ModelSerializer):
+    """Serializer for SMEProjectMilestones Model without document"""
+
+    class Meta:
+        model = SMEProjectMilestones
+        fields = (
+            'id', 'name', 'description',
+            'proof_of_completion',
+            'amount_required', 'sme_project',
+            'sme'
+        )
+        read_only_fields = ('id', 'proof_of_completion',)
+
+
+class SMEProjectMilestonesDocSerializer(serializers.ModelSerializer):
+    """Serializer for SMEProjectMilestones Model with document"""
+
+    class Meta:
+        model = SMEProjectMilestones
+        fields = (
+            'id', 'proof_of_completion', 'status', 'sme_project'
+        )
