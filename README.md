@@ -65,6 +65,10 @@ Poetry commands:
 - Run your project: `poetry run app`
 - To export requirements `poetry export -f requirements.txt > requirements.txt`
 
+To update a dependency with poetry:
+- `poetry update`
+- `poetry install`
+- `poetry export -f requirements.txt > requirements.txt`
 
 Terminal Commands:
 - `touch <file_name><file_ext>`
