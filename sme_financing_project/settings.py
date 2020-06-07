@@ -66,10 +66,23 @@ WSGI_APPLICATION = 'sme_financing_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# Use this configuration for SQLite
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ATOMIC_REQUESTS': True
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.environ.get('POSTGRESDB_HOST'),
+        'PORT': os.environ.get('POSTGRESDB_PORT'),
+        'NAME': os.environ.get('POSTGRESDB_NAME'),
+        'USER': os.environ.get('POSTGRESDB_USER'),
+        'PASSWORD': os.environ.get('POSTGRESDB_PASS'),
         'ATOMIC_REQUESTS': True
     }
 }
